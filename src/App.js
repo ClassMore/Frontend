@@ -1,10 +1,11 @@
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Main from './Main/Main';
-import SocialLogin from './Member/SocialLogin';
 import LectureListPage from './Lecture/LectureListPage';
 import LectureDetailPage from './Lecture/LectureDetailPage';
 import LectureSearchList from './Lecture/LectureSearchList';
+import SocialLogin from './Member/Login/SocialLogin';
+import Join from './Member/Join/Join';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='search' element={<LectureSearchList/>}/>
         </Route>
         <Route path='socialLogin' element={<SocialLogin/>}/>
+        <Route path='join' element={<Join/>}/>
       </Routes>
     </BrowserRouter>
   );
