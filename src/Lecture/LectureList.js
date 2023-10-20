@@ -6,7 +6,7 @@ const LectureList = ({ lectures }) => {
   const nav = useNavigate();
 
   const handleOnclick = (lecture) => {
-    nav(`/lecture/detail/${lecture._id}`, { state: lecture._id });
+    nav(`/lecture/detail/${lecture.lectureId}`, { state: lecture.lectureId });
   }
 
   return (
