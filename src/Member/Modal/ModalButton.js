@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Login from './Login';
 import styled from 'styled-components';
 import Modal from './Modal';
 
@@ -27,7 +26,7 @@ const Button = styled.button`
   font-size: 14px;
   padding: 10px 20px;
   border: none;
-  background-color: #fa9f98;
+  background-color: #2869ff;
   border-radius: 10px;
   color: white;
   font-style: italic;

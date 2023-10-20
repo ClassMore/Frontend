@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import './styles.css'
-import Login from "./Login";
+import '../styles.css'
+import Login from "../Login/Login";
+import Join from "../Join/Join";
 
 const Modal = ({ onClose }) => {
+  const [login, setlogin] = useState(true);
+  const outside = useRef();
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    if(e.target != outside.current)return;
     onClose?.();
   };
+
+  useEffect(() => {
+    console.log(login);
+  }, [login])
+
   return (
 
-    <Overlay>
-        <Login/>  
-        <Button onClick={handleClose}>Close</Button>
+    <Overlay ref={outside} onClick={(e) => handleClose(e)}>
+      {
+        login ? <Login setter={setlogin} /> : <Join setter={setlogin} />
+      }
     </Overlay>
   );
 }
