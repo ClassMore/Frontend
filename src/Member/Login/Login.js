@@ -1,21 +1,24 @@
 import React, { useState } from 'react'
-import './styles.css'
+import '../styles.css'
 import KAKAOIMAGE from './kakao_login_button.png'
 import axios from 'axios'
 
-const Login = () => {
+const Login = ({setter}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const url = process.env.REACT_APP_DEFAULT_URL;
 
-  const handlerLogin = (e) => {
+  const handlerLogin = async (e) => {
     e.preventDefault();
     console.log(url);
-    axios.post(url + 'login',
+    await axios.post(url + 'login',
       { "email": email, "password": password })
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem("token", res.headers.authorization);
+          const token = res.headers.authorization;
+          const nickname = res.data;
+          localStorage.setItem("token", token);
+          localStorage.setItem("nickname", nickname);
           window.location.href = "http://localhost:3000/";
         }
       })
@@ -23,6 +26,11 @@ const Login = () => {
         console.log(error);
         // alert(error.response.data.message);
       });
+  }
+
+  const clickHandler = (e) => {
+    e.preventDefault();
+    setter(false);
   }
 
   const changeValue = (e, setter) => {
@@ -41,7 +49,8 @@ const Login = () => {
         </a>
       </span>
       <div className="links">
-        <span style={{ marginRight: '10px' }}>회원이 아니신가요?</span> <a href="/join" style={{ marginLeft: '10px' }}>회원가입 하기</a>
+        <span style={{ marginRight: '10px' }}>회원이 아니신가요?</span> 
+        <a onClick={(e) => clickHandler(e)} style={{ marginLeft: '10px', cursor: "pointer" }}>회원가입 하기</a>
       </div>
     </div>
   )
