@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap');
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+#container {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 300px;
+}
+
+#logo {
+    position: fixed;
+    float: left;
+    padding-left: 60px;
+}
+
+#logo h1 {
+    font-family: 'Roboto', sans-serif;
+    padding-top: 15px;
+    font-weight: 600;
+    font-size: 40px;
+    color: #FFF;
+    text-shadow: 0 -3px 0 #222,
+        0 6px 8px rgba(0, 0, 0, .4),
+        0 9px 10px rgba(0, 0, 0, .15),
+        0 30px 10px rgba(0, 0, 0, .18),
+        0 15px 10px rgba(0, 0, 0, .21);
+
+}
+
+nav {
+    float: right;
+    width: 900px;
+    height: 100px;
+    padding-top: 30px;
+    padding-bottom: 200px;
+}
+
+#top_menu {
+    height: 40px;
+}
+
+#top_menu>li {
+    float: left;
+}
+
+#top_menu>li>a {
+    display: block;
+    color: #FFF;
+    font-weight: 600;
+    padding: 0px 60px;
+}
+
+#top_menu>li>a:hover {
+    color: #FFFFFF;
+    text-shadow: 0px -5px 40px #FFFFFF;
+}
+
+#contents {
+    clear: both;
+    width: 100%;
+    height: 600px;
+    background-color: white;
+    overflow: hidden;
+    opacity: 0.2;
+    height: 1000px;
+    border-top-left-radius: 4%;
+    border-top-right-radius: 4%;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: gray;
+    margin-bottom: 200px;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.join-form {
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    padding: 20px;
+    width: 300px;
+    border: 0;
+    left: 50%;
+    top: 50%;
+}
+
+.login-form {
+    background-color: #FFFFFF;
+    width: 300px;
+    border-radius: 5px;
+    border: 0;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.kakao_login {
+    text-align: center;
+}
+
+span {
+    text-align: center;
+}
+
+.text-field {
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 50px;
+    border-color: black;
+    padding: 10px;
+}
+
+.auth-send-btn {
+    display: inline-block;
+    background-color: #555555;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #FFFFFF;
+    padding: 12px;
+    height: 44px;
+    border: none;
+    width: 98%;
+}
+
+.auth-submit-btn {
+    background-color: #555555;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #FFFFFF;
+    padding: 12px;
+    height: 44px;
+    border: none;
+    width: 98%;
+}
+
+.submit-btn {
+    background-color: #000000;
+    width: 100%;
+    height: 51px;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    padding: 12px;
+}
+
+.kakao_login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #FEE500;
+  height: 51px;
+  padding: 2px;
+  margin-bottom: 10px;
+}
+
+.links {
+    text-align: center;
+}
+
+.links a {
+    font-size: 12px;
+    color: #5d5d5d
+}
+
+.links span {
+    font-size: 12px;
+    color: #5d5d5d
+}
+
+#code{
+    width: 10vw;
+    display: inline-block;
+}
