@@ -52,7 +52,7 @@ body {
 /**
 * Lineas / Detalles
 -----------------------*/
-.comments-list:before {
+/* .comments-list:before {
  content: '';
  width: 2px;
  height: 100%;
@@ -85,7 +85,7 @@ body {
  position: absolute;
  top: 25px;
  left: -55px;
-}
+} */
 
 
 .comments-list li {
