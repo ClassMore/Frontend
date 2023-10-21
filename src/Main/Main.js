@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const Main = () => {
   const [active, setactive] = useState(false);
   const [viewType, setviewType] = useState('gridView')
-  const [nickname, setnickname] = useState([])
+  const [nickname, setnickname] = useState('')
 
   const modeSwitch = () => {
     setactive(!active);
@@ -26,12 +26,14 @@ const Main = () => {
 
   }, [nickname])
 
+  useEffect(() => {
+    setnickname(localStorage.getItem('nickname'))
+  }, [])
+
   const homeHanlder = (e) => {
     e.preventDefault();
     window.location.href="http://localhost:3000"
   }
-
-  const member = localStorage.getItem('token');
 
   return (
     <>
@@ -75,14 +77,11 @@ const Main = () => {
             </li>
           </ul>
           <div className="account-info">
-            {member ?
+            {nickname ?
               <>
-                {/* <div className="account-info-picture">
-                  <img className='main' src="https://images.unsplash.com/photo-1527736947477-2790e28f3443?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3b21hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="Account" />
-                </div> */}
                 <div className="account-info-name">
                   <strong style={{ display: 'block', marginBottom: '2vh' }}>
-                    Hello, {localStorage.getItem('nickname')}님
+                    Hello, {nickname}님
                   </strong>
 
                   <Button style={{ display: "block", marginBottom: '2vh' }}
