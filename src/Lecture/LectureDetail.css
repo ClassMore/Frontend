@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!!!!!!!!!!!!!!!!!!!!!!그냥 추가!!!!!!!!!!!!!!!!!!!!!!!!*/
-.alarm-switch {
+.alarm-switch, .interest-switch {
   background-color: transparent;
   border: none;
   padding: 0;
@@ -11,11 +11,19 @@
   margin-right: 8px;
   cursor: pointer;
 }
-.alarm-switch .alarm {
-  fill: var(--app-content-main-color);
+.interest-switch.active .interest {
+  fill: red;
+}
+
+.interest-switch .interest {
+  fill: none;
 }
 
 .alarm-switch.active .alarm {
+  fill: yellow;
+}
+
+.alarm-switch .alarm {
   fill: none;
 }
 
