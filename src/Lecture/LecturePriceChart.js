@@ -11,7 +11,7 @@ const LecturePriceChart = () => {
             const source = response.data;
             setLectureData(source);
         } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data12:', error);
         }
     };
 
