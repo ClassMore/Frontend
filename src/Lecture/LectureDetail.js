@@ -22,13 +22,13 @@ const LectureDetail = ({lecture}) => {
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
         </button>
         <div className="product-cell custom image"><br /><span>{lecture.title}</span></div>
-        <br /><br /><div className="product-cell custom category">
+        <br /><div className="product-cell custom category">
           <span className="cell-label">Instructor:
         </span>{lecture.instructor}</div>
-        <br /><div className="product-cell custom sales">
+        <div className="product-cell custom sales">
           <span className="cell-label">tag:</span>{lecture.tag}</div>
-        <br /><div className="product-cell custom stock"><span className="cell-label">Site:</span>사이트이름</div>
-        <br /><div className="product-cell custom price"><span style={{fontSize: "26px"}} className="cell-label">
+        <div className="product-cell custom stock"><span className="cell-label">Site:</span>사이트이름</div>
+        <div className="product-cell custom price"><span style={{fontSize: "26px"}} className="cell-label">
           <s style={{fontSize: "26px"}}>원가</s>&nbsp;&nbsp;&nbsp;
         <span style={{fontSize: "26px"}}>할인가</span></span></div>
         <br /><br />
@@ -59,13 +59,13 @@ const LectureDetail = ({lecture}) => {
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
         </button>
         <div className="product-cell custom image"><br /><span>{lecture.title}</span></div>
-        <br /><br /><div className="product-cell custom category">
+        <br /><div className="product-cell custom category">
           <span className="cell-label">Instructor:
         </span>{lecture.instructor}</div>
-        <br /><div className="product-cell custom sales">
+        <div className="product-cell custom sales">
           <span className="cell-label">tag:</span>{lecture.tag}</div>
-        <br /><div className="product-cell custom stock"><span className="cell-label">Site:</span>사이트이름</div>
-        <br /><div className="product-cell custom price"><span style={{fontSize: "26px"}} className="cell-label">
+        <div className="product-cell custom stock"><span className="cell-label">Site:</span>사이트이름</div>
+        <div className="product-cell custom price"><span style={{fontSize: "26px"}} className="cell-label">
           <s style={{fontSize: "26px"}}>원가</s>&nbsp;&nbsp;&nbsp;
         <span style={{fontSize: "26px"}}>할인가</span></span></div>
         <br /><br />
