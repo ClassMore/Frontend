@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import LectureDetail from './LectureDetail'
 import OpinionPage from '../Opinion/OpinionPage'
+import LecturePriceChart from './LecturePriceChart'
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -30,6 +31,7 @@ const LectureDetailPage = () => {
   return (
     <>
       <LectureDetail lecture={lecture}/>
+      <LecturePriceChart lectureId={lectureId}/>
       <OpinionPage lectureId={lectureId}/>
     </>
   )
