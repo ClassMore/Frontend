@@ -1,47 +1,59 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chart from 'chart.js/auto';
+import axios from 'axios';
 
 const LecturePriceChart = () => {
+    const [lectureData, setLectureData] = useState([]);
 
-    // TO-DO : lectureId로 강의할인가, 날짜를 리스트로 받아온다.
-
-    // TO-DO : 가져온 데이터를 세팅한다.
-
+    const getLectures = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/lecture/inflearn330944/chart`);
+            const source = response.data;
+            setLectureData(source);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     useEffect(() => {
-        const ctx = document.getElementById('myChart');
+        getLectures();
+    }, []);
 
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1,
-                    stepped: true,
-                }]
-            },
-            options: {
-                responsive: true,
-                interaction: {
-                    intersect: false,
-                    axis: 'x'
+    useEffect(() => {
+        console.log(lectureData)
+        if (lectureData.length > 0) {
+            const ctx = document.getElementById('lecturePriceChart');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: lectureData.map(item => item.date),
+                    datasets: [{
+                        label: 'Sale Price',
+                        data: lectureData.map(item => item.salePrice),
+                        borderWidth: 1,
+                        stepped: true,
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                options: {
+                    responsive: true,
+                    interaction: {
+                        intersect: false,
+                        axis: 'x'
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
                     }
                 }
-            }
-        });
-    }, []);
+            });
+        }
+    }, [lectureData]);
 
     return (
         <div>
-            <canvas id="myChart"></canvas>
+            <canvas id="lecturePriceChart"></canvas>
         </div>
     );
-}
-
+};
 export default LecturePriceChart;
