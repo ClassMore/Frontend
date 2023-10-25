@@ -6,6 +6,8 @@ import LectureDetailPage from './Lecture/LectureDetailPage';
 import LectureSearchList from './Lecture/LectureSearchList';
 import SocialLogin from './Member/Login/SocialLogin';
 import Join from './Member/Join/Join';
+import Mypage from "./Member/Mypage/Mypage";
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route index element={<LectureListPage/>}/>
           <Route path='lecture/detail/*' element={<LectureDetailPage/>}/>
           <Route path='search' element={<LectureSearchList/>}/>
+          <Route path='mypage' element={<Mypage/>}/>
         </Route>
         <Route path='socialLogin' element={<SocialLogin/>}/>
         <Route path='join' element={<Join/>}/>
