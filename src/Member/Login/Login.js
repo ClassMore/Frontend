@@ -16,9 +16,11 @@ const Login = ({setter}) => {
       .then((res) => {
         if (res.status === 200) {
           const token = res.headers.authorization;
-          const nickname = res.data;
+          const nickname = res.data.nickname;
+          const id = res.data.id;
           localStorage.setItem("token", token);
           localStorage.setItem("nickname", nickname);
+          localStorage.setItem("id", id);
           window.location.href = "http://localhost:3000/";
         }
       })
