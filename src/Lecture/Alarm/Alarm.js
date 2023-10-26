@@ -6,6 +6,7 @@ const Alarm = ({lectureId}) => {
 	const url = process.env.REACT_APP_DEFAULT_URL;
 
 	useEffect(() => {
+		if(lectureId === undefined)return;
 		axios.get(`${url}alarm/${lectureId}`,
 		{headers: {Authorization: `${localStorage.getItem('token')}`}}
 		)
@@ -13,6 +14,8 @@ const Alarm = ({lectureId}) => {
 			const isAlarmed = res.data.isAlarmed;
 			if(isAlarmed)setclassname('active')
 			else setclassname('');
+		}).catch(err => {
+			console.error(err);
 		})
 	}, [lectureId])
 
@@ -21,6 +24,10 @@ const Alarm = ({lectureId}) => {
   }, [classname])
 
 	const clickHandler = () => {
+		if(!localStorage.getItem('token')){
+			alert('회원만 등록할 수 있습니다.')
+			return;
+		}
 		axios.post(`${url}user/alarm/${lectureId}`,
 		{},
 		{headers: {Authorization: `${localStorage.getItem('token')}`}}

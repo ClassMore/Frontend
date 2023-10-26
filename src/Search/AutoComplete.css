@@ -1,0 +1,15 @@
+.autocomplete::-webkit-scrollbar{
+  background-color: var(--filter-reset);
+  border: 10px;
+}
+
+.autocomplete::-webkit-scrollbar-thumb{
+  background-color: var(--app-bg);
+  border: 50px;
+  border-radius: 300px;
+}
+
+.autocomplete{
+  background-color: var(--app-content-secondary-color);
+  color: var(--app-content-main-color);
+}

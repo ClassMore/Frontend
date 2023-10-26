@@ -65,7 +65,7 @@ const Join = ({setter}) => {
     joinMemebr
     )
     .then(res => {
-      window.confirm("회원가입에 성공하였습니다.")
+      window.alert("회원가입에 성공하였습니다.")
       window.location.href = "http://localhost:3000/";
     }).catch(error => {
       console.log(error);
@@ -88,9 +88,9 @@ const Join = ({setter}) => {
 
             <input type="text" name="nickName" class="text-field" placeholder="닉네임"
             value={nickName} onChange={(e) => chnageHandler(e, setnickName)}/>
-            <input type="text" name="password" class="text-field" placeholder="비밀번호"
+            <input type="password" name="password" class="text-field" placeholder="비밀번호"
             value={password} onChange={(e) => chnageHandler(e, setpassword)}/>
-            <input type="text" name="password-valid" class="text-field" placeholder="비밀번호 확인"
+            <input type="password" name="password-valid" class="text-field" placeholder="비밀번호 확인"
             value={confirmPassword} onChange={(e) => chnageHandler(e, setconfirmPassword)}/>
 
             <input type="submit" onClick={(e) => joinHandler(e)} value="가입하기" class="submit-btn"/>

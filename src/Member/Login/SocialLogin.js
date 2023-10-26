@@ -7,8 +7,10 @@ const SocialLogin = () => {
     const dataSplit = data.split('&');
     const token = "Bearer " + dataSplit[0];
     const nickname = dataSplit[1];
+    const id = dataSplit[2]
     localStorage.setItem("token", token);
     localStorage.setItem('nickname', nickname);
+    localStorage.setItem("id", id);
     window.location.href = "http://localhost:3000/";
   }, [])
   return (

@@ -4,11 +4,14 @@ import { Outlet } from 'react-router-dom';
 import Search from '../Search/Search';
 import ModalButton from '../Member/Modal/ModalButton';
 import styled from 'styled-components';
+import AutoComplete from '../Search/AutoComplete';
 
 const Main = () => {
   const [active, setactive] = useState(false);
   const [viewType, setviewType] = useState('gridView')
   const [nickname, setnickname] = useState('')
+  const [homeActive, sethomeActive] = useState('')
+  const [myPageActive, setmyPageActive] = useState('')
 
   const modeSwitch = () => {
     setactive(!active);
@@ -19,20 +22,33 @@ const Main = () => {
   const logoutHandler = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('nickname');
+    localStorage.removeItem('id');
     setnickname('');
   }
 
   useEffect(() => {
-
   }, [nickname])
 
   useEffect(() => {
     setnickname(localStorage.getItem('nickname'))
+    if (window.location.href.includes('mypage')) {
+      sethomeActive('');
+      setmyPageActive('active');
+    } else {
+      sethomeActive('active');
+      setmyPageActive('')
+    }
+
   }, [])
 
   const homeHanlder = (e) => {
     e.preventDefault();
-    window.location.href="http://localhost:3000"
+    window.location.href = "http://localhost:3000"
+  }
+
+  const myPageHanlder = (e) => {
+    e.preventDefault();
+    window.location.href = "http://localhost:3000/mypage"
   }
 
   return (
@@ -45,19 +61,21 @@ const Main = () => {
             </div>
           </div>
           <ul className="sidebar-list">
-            <li className="sidebar-list-item">
-              <a onClick={(e) => homeHanlder(e)} style={{cursor: "pointer"}}>
+            <li className={`sidebar-list-item ${homeActive}`}>
+              <a href='#' onClick={(e) => homeHanlder(e)} style={{ cursor: "pointer" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
                 <span className='main'>Home</span>
               </a>
             </li>
-            <li className="sidebar-list-item active">
-              <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
-                <span className='main'>Products</span>
-              </a>
-            </li>
-            <li className="sidebar-list-item">
+            {localStorage.getItem('token') && 
+              <li className={`sidebar-list-item ${myPageActive}`}>
+                <a href='#' onClick={(e) => myPageHanlder(e)} style={{ cursor: 'pointer' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
+                  <span className='main'>Mypage</span>
+                </a>
+              </li>
+            }
+            {/* <li className="sidebar-list-item">
               <a href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83" /><path d="M22 12A10 10 0 0 0 12 2v10z" /></svg>
                 <span className='main'>Statistics</span>
@@ -74,7 +92,7 @@ const Main = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
                 <span className='main'>Notifications</span>
               </a>
-            </li>
+            </li> */}
           </ul>
           <div className="account-info">
             {nickname ?
@@ -85,12 +103,8 @@ const Main = () => {
                   </strong>
 
                   <Button style={{ display: "block", marginBottom: '2vh' }}
-                  onClick={() => logoutHandler()}>
+                    onClick={() => logoutHandler()}>
                     Logout
-                  </Button>
-
-                  <Button>
-                    Mypage
                   </Button>
                 </div>
               </>
@@ -112,7 +126,8 @@ const Main = () => {
             {/* <button className="app-content-headerButton" onClick={() => nav('/login')}>Add Product</button> */}
           </div>
 
-          <Search setviewType={setviewType} />
+          {/* <Search /> */}
+          <AutoComplete />
 
           <div className={`products-area-wrapper ${viewType}`} style={{ overflowY: 'scroll', height: '80vh' }}>
             <div className="products-header">

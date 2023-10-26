@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
-const Filter = ({type}) => {
+const Filter = ({ type }) => {
   const [data, setdata] = useState('instructor')
 
-  const resetHandler = () => {
-    type('');
-  }
+  // const resetHandler = () => {
+  //   type('');
+  // }
 
-  const applyHandler = () => {
-    type(data);
+  const keyword = {"title": "강의명", "instructor": "강사명", "tag": "태그명"}
+  const applyHandler = (e) => {
+    setdata(e.target.value);
     document.querySelector(".filter-menu").classList.toggle("active");
   }
+
+  useEffect(() => {
+    type(data)
+  }, [data])
 
   const filterHandler = () => {
     document.querySelector(".filter-menu").classList.toggle("active");
@@ -19,21 +24,27 @@ const Filter = ({type}) => {
   return (
     <>
       <div className="filter-button-wrapper">
-        <button className="action-button filter jsFilter" onClick={() => filterHandler()}><span>Filter</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg></button>
+        <button className="action-button filter jsFilter" onClick={() => filterHandler()}>
+          <span>{keyword[`${data}`]}</span>
+          <svg style={{marginLeft: "1vw"}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-filter">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+          </svg>
+        </button>
+
         <div className="filter-menu">
           <label className='main'>Category</label>
-          <select className='main' onChange={(e) => setdata(e.target.value)}>
+          <select className='main select' onChange={(e) => applyHandler(e)}>
             <option className='main' value="instructor">강사명</option>
             <option className='main' value="title">강의명</option>
             <option className='main' value="tag">태그</option>
           </select>
           <div className="filter-menu-buttons">
-            <button className="filter-button reset" onClick={() => resetHandler()}>
+            {/* <button className="filter-button reset" onClick={() => resetHandler()}>
               Reset
-            </button>
-            <button className="filter-button apply" onClick={() => applyHandler()}>
+            </button> */}
+            {/* <button className="filter-button apply" onClick={() => applyHandler()}>
               Apply
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

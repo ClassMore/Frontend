@@ -11,25 +11,20 @@ const LectureListPage = () => {
   const url = process.env.REACT_APP_DEFAULT_URL;
 
   const getBoards = async () => {
-    setloading(true)
     await axios.get(
       `${url}lecture?page=${page}&size=10`,
     ).then(res => {
       const source = res.data;
       setLectures(l => [...l, ...source]);
     });
-    setloading(true)
+    setPage((page) => page + 1)
   }
 
   useEffect(() => {
-    getBoards()
-  }, [page]);
-
-  useEffect(() => {
     if (inView) {
-      setPage(page + 1)
+      getBoards()
     }
-  }, [inView, loading])
+  }, [inView])
 
   return (lectures && 
     <>  
