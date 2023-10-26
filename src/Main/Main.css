@@ -47,6 +47,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body:not(input){
+  caret-color: 'transparent';
+}
+
 .app-container {
   border-radius: 4px;
   width: 100%;
@@ -305,7 +309,7 @@ body {
   background-color: var(--app-content-secondary-color);
   position: absolute;
   top: calc(100% + 16px);
-  right: -74px;
+  right: -165px;
   border-radius: 4px;
   padding: 8px;
   width: 220px;
