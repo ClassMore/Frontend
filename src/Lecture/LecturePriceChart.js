@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 
-const LecturePriceChart = () => {
+const LecturePriceChart = ({lectureId}) => {
     const [lectureData, setLectureData] = useState([]);
 
     const getLectures = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/lecture/inflearn330944/chart`);
+            const response = await axios.get(`http://localhost:8080/api/lecture/${lectureId}/chart`);
             const source = response.data;
             setLectureData(source);
         } catch (error) {
@@ -31,6 +31,7 @@ const LecturePriceChart = () => {
                         label: 'Sale Price',
                         data: lectureData.map(item => item.salePrice),
                         borderWidth: 1,
+                        borderColor: ['red'],
                         stepped: true,
                     }]
                 },
