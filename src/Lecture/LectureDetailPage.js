@@ -7,13 +7,12 @@ import axios from 'axios';
 
 const LectureDetailPage = () => {
   const location = useLocation();
-  const nav = useNavigate();
   const [lecture, setLecture] = useState([]);
   const [lectureId, setlectureId] = useState('');
   const url = process.env.REACT_APP_DEFAULT_URL;
 
   useEffect(() => {
-    setlectureId(location.pathname.split('/')[3]);
+    console.log(lectureId);
     // console.log(lectureId);
     axios.get(`${url}lecture/${lectureId}`)
     .then(result => {
@@ -28,7 +27,11 @@ const LectureDetailPage = () => {
     });
   }, [lectureId]);
 
-  return (
+  useEffect(() => {
+    setlectureId(location.state);
+  }, [])
+
+  return (lecture && lectureId &&
     <>
       <LectureDetail lecture={lecture}/>
       <LecturePriceChart lectureId={lectureId}/>
