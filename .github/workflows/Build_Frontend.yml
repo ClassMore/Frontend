@@ -47,7 +47,7 @@ jobs:
       run: |
         VERSION=$(echo ${{ github.sha }} | cut -c1-8)
         echo VERSION=$VERSION
-        echo "::GITHUB_OUTPUT name=version::$VERSION"
+        echo "::set-output name=version::$VERSION"
     - name: Build, tag, and push image to Amazon ECR
       id: image-info
       env:
