@@ -55,7 +55,13 @@ jobs:
         ECR_REPOSITORY: frontend-app
         IMAGE_TAG: ${{ steps.image.outputs.version }}
       run: |
-        echo "::GITHUB_OUTPUT name=ecr_repository::$ECR_REPOSITORY"
-        echo "::GITHUB_OUTPUT name=image_tag::$IMAGE_TAG"
+        name="ecr_repository"
+        value="$ECR_REPOSITORY"
+        echo "$name=$value" >> $GITHUB_OUTPUT
+        
+        name="image_tag"
+        value="$IMAGE_TAG"
+        echo "$name=$value" >> $GITHUB_OUTPUT
+        
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
