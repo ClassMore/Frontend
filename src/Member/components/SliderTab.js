@@ -4,7 +4,6 @@ import "./SliderTab.css";
 
 const SliderTab = ({ courses }) => {
   const sliderSettings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -30,8 +29,8 @@ const SliderTab = ({ courses }) => {
         <Slider ref={sliderRef} {...sliderSettings}>
           {courses.map((course, index) => (
             <div key={index}>
-              <img style={{width: "100px", height: "100px"}} src={course.imageLink} alt={course.title}/>
-              <h3>{course.title}</h3>
+              <img style={{width: "200px", height: "155px"}} src={course.imageLink} alt={course.title}/>
+              <h3 style={{color: "white"}}>{course.title}</h3>
             </div>
           ))}
         </Slider>

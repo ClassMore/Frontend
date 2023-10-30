@@ -100,8 +100,8 @@ const Comment = ({ opinion, comments }) => {
                   <>
                     <input value={modifiedContent !== undefined ? modifiedContent : comment.content}
                       onChange={(e) => changeHandler(e)} />
-                    <button onClick={() => modifyHandler(comment)}>수정</button>
-                    <button onClick={() => seteditIdx(-1)}>취소</button>
+                    <button className="app-content-headerButton" onClick={() => modifyHandler(comment)}>수정</button>
+                    <button className="app-content-headerButton" onClick={() => seteditIdx(-1)}>취소</button>
                   </>
                   :
                   `${comment.content}`

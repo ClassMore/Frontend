@@ -616,3 +616,9 @@ body:not(input){
   opacity: 0.6;
 }
 
+hr {
+  border: 0px;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, white, white, white, transparent);
+}
+

@@ -39,12 +39,12 @@ const OpinionPage = ({ lectureId }) => {
     <>
       <div className="comments-container">
         <div style={{ marginLeft: '50rem' }}>
-          <button onClick={() => { setwrite(w => !w) }}>의견 작성</button>
+          <button className="app-content-headerButton" onClick={() => { setwrite(w => !w) }}>의견 작성</button>
           {write &&
             <>
-              <input type='text' onChange={(e) => changeHandler(e)} />
-              <button onClick={() => clickHandler(true)}>작성</button>
-              <button onClick={() => { setwrite(w => !w) }}>닫기</button>
+              <br/><input type='text' onChange={(e) => changeHandler(e)} />&nbsp;
+              <button className="app-content-headerButton" onClick={() => clickHandler(true)}>작성</button>&nbsp;
+              <button className="app-content-headerButton" onClick={() => { setwrite(w => !w) }}>닫기</button>
             </>
           }
         </div>

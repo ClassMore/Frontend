@@ -30,8 +30,8 @@ const LecturePriceChart = ({lectureId}) => {
                     datasets: [{
                         label: 'Sale Price',
                         data: lectureData.map(item => item.salePrice),
-                        borderWidth: 1,
-                        borderColor: ['red'],
+                        borderWidth: 2,
+                        borderColor: ['white'],
                         stepped: true,
                     }]
                 },
@@ -52,8 +52,8 @@ const LecturePriceChart = ({lectureId}) => {
     }, [lectureData]);
 
     return (
-        <div class="lecture-price-chart custom">
-            <canvas id="lecturePriceChart" style={{height:"60vh", width:"80vw"}}></canvas>
+        <div class="lecture-price-chart custom" style={{margin:"20px auto"}}>
+            <canvas id="lecturePriceChart" style={{height:"60vh", width:"65vw"}}></canvas>
         </div>
     );
 };

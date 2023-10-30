@@ -163,7 +163,7 @@ const Opinion = ({ lectureId, _write }) => {
               {idxList[idx] ? '△답글보기' : '▽답글보기'}
             </a>
 
-            <button onClick={() => {
+            <button className="app-content-headerButton" onClick={() => {
               if (writeIdx === idx) setwriteIdx(-1)
               else setwriteIdx(idx)
               setwrite(w => !w)
@@ -172,8 +172,8 @@ const Opinion = ({ lectureId, _write }) => {
 
             {writeIdx === idx && write &&
               <>
-                <input type='text' onChange={(e) => changeHandler(e, setcontent)} />
-                <button onClick={() => clickHandler(opinion)}>작성</button>
+                &nbsp;<input type='text' onChange={(e) => changeHandler(e, setcontent)} />&nbsp;
+                <button onClick={() => clickHandler(opinion)}>작성</button>&nbsp;
                 <button onClick={() => {
                   setwriteIdx(-1)
                   setwrite(w => !w)

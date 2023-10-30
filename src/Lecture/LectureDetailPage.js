@@ -33,8 +33,8 @@ const LectureDetailPage = () => {
 
   return (lecture && lectureId &&
     <>
-      <LectureDetail lecture={lecture}/>
-      <LecturePriceChart lectureId={lectureId}/>
+      <LectureDetail lecture={lecture}/><br/>
+      <LecturePriceChart lectureId={lectureId}/><br/>
       <OpinionPage lectureId={lectureId}/>
     </>
   )

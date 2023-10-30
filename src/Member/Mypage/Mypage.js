@@ -149,7 +149,7 @@ const Mypage = () => {
               </ul>
             </div>
             {/* <!--tabs panels--> */}
-            <div className="tabs__panels">
+            <div className="tabs__panels"><hr/>
               {/* <!--single panel--> */}
               <div className="tabs__panel">
                 <div className="tabs__panel-card">
