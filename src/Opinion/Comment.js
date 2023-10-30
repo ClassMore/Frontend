@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 
-const Comment = ({ opinion, comments }) => {
-
+const Comment = ({opinion, comments, ref}) => {
+  useImperativeHandle(ref, () => ({
+    // 부모 컴포넌트에서 사용할 함수를 선언
+    modifyHandler
+  }))
 
   const [remove, setremove] = useState(false);
   const [editIdx, seteditIdx] = useState(-1)

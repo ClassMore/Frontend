@@ -15,6 +15,7 @@ const Opinion = ({ lectureId, _write }) => {
   const [editIdx, seteditIdx] = useState(-1)
   const [remove, setremove] = useState(false);
   const [modifiedContent, setmodifiedContent] = useState(undefined)
+  const [modifiedComment, setmodifiedComment] = useState('')
 
   const url = process.env.REACT_APP_DEFAULT_URL;
 
@@ -133,7 +134,16 @@ const Opinion = ({ lectureId, _write }) => {
                         if (editIdx !== idx) seteditIdx(idx);
                         else seteditIdx(-1)
                         setmodifiedContent(undefined)
-                      }} style={{ float: "right" }}>수정</button>
+                      }} style={{ float: "right", marginLeft: '0.5rem'}}>수정</button>
+
+
+
+                      <button onClick={() => {
+                        if (writeIdx === idx) setwriteIdx(-1)
+                        else setwriteIdx(idx)
+                        setwrite(w => !w)
+                      }} style={{float: 'right'}}>댓글 작성
+                      </button>
                     </>
                   }
                 </div>
@@ -153,7 +163,7 @@ const Opinion = ({ lectureId, _write }) => {
               </div>
             </div>
 
-            <a style={{ marginLeft: "38.5rem" }} onClick={() => {
+            <a className='addComment' style={{ marginLeft: "38.5rem" }} onClick={() => {
               setviewComment(v => !v)
               if (idxList[idx]) delete idxList[idx]
               else {
@@ -163,23 +173,37 @@ const Opinion = ({ lectureId, _write }) => {
               {idxList[idx] ? '△답글보기' : '▽답글보기'}
             </a>
 
-            <button className="app-content-headerButton" onClick={() => {
-              if (writeIdx === idx) setwriteIdx(-1)
-              else setwriteIdx(idx)
-              setwrite(w => !w)
-            }}>댓글 작성
-            </button>
-
             {writeIdx === idx && write &&
-              <>
-                &nbsp;<input type='text' onChange={(e) => changeHandler(e, setcontent)} />&nbsp;
-                <button onClick={() => clickHandler(opinion)}>작성</button>&nbsp;
-                <button onClick={() => {
-                  setwriteIdx(-1)
-                  setwrite(w => !w)
-                }}>닫기</button>
-              </>
+              <ul className='comments-list reply-list'>
+                <li>
+                  <div className="comment-box">
+                    <div className="comment-head">
+
+                      <h6 className="comment-name by-author">
+                        <a>{localStorage.getItem('nickname')}</a>
+                      </h6>
+
+                    </div>
+
+                    <div className="comment-content">
+
+                      <>
+                        <input value={content}
+                          onChange={(e) => changeHandler(e, setcontent)} />
+                        <button onClick={() => clickHandler(opinion)}>작성</button>
+                        <button onClick={() => {
+                          if (writeIdx === idx) setwriteIdx(-1)
+                          else setwriteIdx(idx)
+                          setwrite(w => !w)
+                        }}>취소</button>
+                      </>
+
+                    </div>
+                  </div>
+                </li>
+              </ul>
             }
+
 
             {idxList[idx] &&
               <ul className="comments-list reply-list">
@@ -187,6 +211,7 @@ const Opinion = ({ lectureId, _write }) => {
               </ul>
             }
           </li>
+
         ))
       }
     </>)

@@ -38,12 +38,12 @@ body {
   background-color: var(--app-content-secondary-color)
 }
 
-.comments-container::-webkit-scrollbar{
+.comments-container::-webkit-scrollbar {
   background-color: var(--filter-reset);
   border: 10px;
 }
 
-.comments-container::-webkit-scrollbar-thumb{
+.comments-container::-webkit-scrollbar-thumb {
   background-color: var(--app-bg);
   border: 50px;
   border-radius: 300px;
@@ -272,6 +272,10 @@ body {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+
+.addComment {
+  color: var(--app-content-main-color);
 }
 
 /** =====================
