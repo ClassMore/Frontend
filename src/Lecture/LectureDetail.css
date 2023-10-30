@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 .interest-switch.active .interest {
-  fill: red;
+  fill: white;
 }
 
 .interest-switch .interest {
@@ -20,7 +20,7 @@
 }
 
 .alarm-switch.active .alarm {
-  fill: yellow;
+  fill: white;
 }
 
 .alarm-switch .alarm {
@@ -48,16 +48,15 @@
 }
 
 .product-cell.custom.image span {
-  font-size: 65px;
+  font-size: 55px;
   line-height: 10vh;
 }
 
 .product-cell.custom img {
   width: 100%;
-  height: 80%;
   object-fit: cover;
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-top: 40px;
 }
 
 .lecture-price-chart.custom {

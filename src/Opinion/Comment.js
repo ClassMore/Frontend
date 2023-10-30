@@ -84,16 +84,14 @@ const Comment = ({opinion, comments, ref}) => {
                 {comment.isModified && <span>(수정됨)</span>}
                 {comment.memberId == localStorage.getItem('id') &&
                   <>
-                    <button
-                      onClick={() => removeHandler(comment)}
-                      style={{ float: "right", marginLeft: "0.5rem" }}>삭제</button>
-                    <button
+                    <button className="editButtonRight"
+                      onClick={() => removeHandler(comment)}>삭제</button>
+                    <button className="editButtonRight"
                       onClick={() => {
                         setmodifiedContent(undefined)
                         if (idx === editIdx) seteditIdx(-1)
                         else seteditIdx(idx)
-                      }}
-                      style={{ float: "right" }}>수정</button>
+                      }}>수정</button>
                   </>
                 }
               </div>
@@ -103,9 +101,10 @@ const Comment = ({opinion, comments, ref}) => {
                   <>
                     <input value={modifiedContent !== undefined ? modifiedContent : comment.content}
                       onChange={(e) => changeHandler(e)} />
-                    <button className="app-content-headerButton" onClick={() => modifyHandler(comment)}>수정</button>
-                    <button className="app-content-headerButton" onClick={() => seteditIdx(-1)}>취소</button>
+                    <button className="editButton" onClick={() => modifyHandler(comment)}>수정</button>
+                    <button className="editButton" onClick={() => seteditIdx(-1)}>취소</button>
                   </>
+                
                   :
                   `${comment.content}`
                 }

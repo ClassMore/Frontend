@@ -127,23 +127,22 @@ const Opinion = ({ lectureId, _write }) => {
                   {opinion.isModified && <span>(수정됨)</span>}
                   {opinion.memberId == localStorage.getItem('id') &&
                     <>
-                      <button onClick={() => removeHandler(opinion)}
-                        style={{ float: "right", marginLeft: '0.5rem' }}>삭제</button>
+                      <button className="editButtonRight" onClick={() => removeHandler(opinion)}>삭제</button>
 
-                      <button onClick={() => {
+                      <button className="editButtonRight" onClick={() => {
                         if (editIdx !== idx) seteditIdx(idx);
                         else seteditIdx(-1)
                         setmodifiedContent(undefined)
-                      }} style={{ float: "right", marginLeft: '0.5rem'}}>수정</button>
+                      }}>수정</button>
 
-
-
-                      <button onClick={() => {
+                      <button className="editButtonRight" onClick={() => {
                         if (writeIdx === idx) setwriteIdx(-1)
                         else setwriteIdx(idx)
                         setwrite(w => !w)
-                      }} style={{float: 'right'}}>댓글 작성
+                      }}>댓글 작성
                       </button>
+
+
                     </>
                   }
                 </div>
@@ -153,8 +152,8 @@ const Opinion = ({ lectureId, _write }) => {
                     <>
                       <input value={modifiedContent !== undefined ? modifiedContent : opinion.content}
                         onChange={(e) => changeHandler(e, setmodifiedContent)} />
-                      <button onClick={() => modifyHandler(opinion)}>수정</button>
-                      <button onClick={() => seteditIdx(-1)}>취소</button>
+                      <button className="editButton" onClick={() => modifyHandler(opinion)}>수정</button>
+                      <button className="editButton" onClick={() => seteditIdx(-1)}>취소</button>
                     </>
                     :
                     `${opinion.content}`
@@ -163,14 +162,14 @@ const Opinion = ({ lectureId, _write }) => {
               </div>
             </div>
 
-            <a className='addComment' style={{ marginLeft: "38.5rem" }} onClick={() => {
+            <a className='addComment' style={{ marginTop: "1rem", marginLeft: "5rem" }} onClick={() => {
               setviewComment(v => !v)
               if (idxList[idx]) delete idxList[idx]
               else {
                 idxList[idx] = true;
               }
             }}>
-              {idxList[idx] ? '△답글보기' : '▽답글보기'}
+              {idxList[idx] ? '▲ 답글 보기' : '▼ 답글 보기'}
             </a>
 
             {writeIdx === idx && write &&
@@ -190,8 +189,8 @@ const Opinion = ({ lectureId, _write }) => {
                       <>
                         <input value={content}
                           onChange={(e) => changeHandler(e, setcontent)} />
-                        <button onClick={() => clickHandler(opinion)}>작성</button>
-                        <button onClick={() => {
+                        <button className="editButton" onClick={() => clickHandler(opinion)}>작성</button>
+                        <button className="editButton" onClick={() => {
                           if (writeIdx === idx) setwriteIdx(-1)
                           else setwriteIdx(idx)
                           setwrite(w => !w)

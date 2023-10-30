@@ -38,16 +38,16 @@ const OpinionPage = ({ lectureId }) => {
   return (lectureId &&
     <>
       <div className="comments-container">
-        <div style={{ marginLeft: '50rem' }}>
-          <button className="app-content-headerButton" onClick={() => { setwrite(w => !w) }}>의견 작성</button>
+        <div style={{ marginLeft: '3rem', marginTop: '2rem' }}>
+          <button className="app-content-headerButton" style={{ fontSize: '18px', height: '36px' }} 
+          onClick={() => { setwrite(w => !w) }}>
+          {write ? '작성 취소' : '의견 작성'}</button>
         </div>
 
         <ul id="comments-list" className="comments-list">
           {write &&
             <>
-              {/* <br/><input type='text' onChange={(e) => changeHandler(e)} />&nbsp;
-              <button className="app-content-headerButton" onClick={() => clickHandler(true)}>작성</button>&nbsp;
-              <button className="app-content-headerButton" onClick={() => { setwrite(w => !w) }}>닫기</button> */}
+              {}
               <ul id='comments-list' className='comments-list'>
                 <li>
                   <div className="comment-main-level">
@@ -56,17 +56,15 @@ const OpinionPage = ({ lectureId }) => {
                         <h6 className="comment-name by-author">
                           <a>{localStorage.getItem('nickname')}</a>
                         </h6>
+                      </div>
 
-
-                        <div className="comment-content" style={{marginTop: '1rem'}}>
-                          <input value={content}
-                            onChange={(e) => changeHandler(e)} />
-                          <button onClick={() => clickHandler()}>작성</button>
-                          <button onClick={() => setwrite(w => !w)}>취소</button>
-                        </div>
+                      <div className="comment-content">
+                        <input value={content}
+                          onChange={(e) => changeHandler(e)} />
+                        <button className='editButton' onClick={() => clickHandler()}>등록</button>
+                      </div>
                       </div>
                     </div>
-                  </div>
                 </li>
               </ul>
             </>

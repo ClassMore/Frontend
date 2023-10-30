@@ -30,12 +30,11 @@ body {
 =======================*/
 .comments-container {
   margin: 80px auto 40px;
-  width: 90%;
+  width: 80%;
   border-radius: 10px;
   overflow-y: scroll;
   max-height: 25rem;
-  box-shadow: 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-  background-color: var(--app-content-secondary-color)
+  background-color: var(--app-content-secondary-color);
 }
 
 .comments-container::-webkit-scrollbar {
@@ -166,13 +165,10 @@ body {
 * Caja del Comentario
 ---------------------------*/
 .comments-list .comment-box {
-  width: 680px;
+  width: 800px;
   justify-content: center;
-  padding-left: 4rem;
+  padding-left: 5rem;
   position: relative;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 
 .comments-list .comment-box:before,
@@ -180,7 +176,7 @@ body {
   content: '';
   height: 0;
   width: 0;
-  padding-left: 4rem;
+  padding-left: 5rem;
   position: absolute;
   display: block;
   border-width: 10px 12px 10px 0;
@@ -197,7 +193,7 @@ body {
 }
 
 .reply-list .comment-box {
-  width: 610px;
+  width: 800px;
 }
 
 .comment-box .comment-head {
@@ -207,7 +203,7 @@ body {
   overflow: hidden;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0px 0px;
 }
 
 .comment-box .comment-head i {
@@ -256,6 +252,10 @@ body {
   border-radius: 0 0 4px 4px;
 }
 
+.comment-content input {
+  width:400px;
+}
+
 .comment-box .comment-name.by-author,
 .comment-box .comment-name.by-author a {
   color: #03658c;
@@ -276,6 +276,19 @@ body {
 
 .addComment {
   color: var(--app-content-main-color);
+}
+
+.editButton {
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  margin-left: 0.5rem;
+}
+
+.editButtonRight {
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  margin-left: 0.5rem;
+  float: right;
 }
 
 /** =====================
