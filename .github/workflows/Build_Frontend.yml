@@ -59,6 +59,7 @@ jobs:
         echo "::set-output name=image_tag::$IMAGE_TAG"
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
     - name: Checkout for Kustomize repository
       uses: actions/checkout@v2
       with:
@@ -75,12 +76,20 @@ jobs:
         cd k8s-manifest-repo/overlays/dev/ 
         kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/classmoa-front=${{ steps.login-ecr.outputs.registry }}/classmoa-front:${{ github.run_number }}.${{ github.run_attempt }}
         cat kustomization.yaml
+
       # 수정된 kustomization.yaml 파일 commit push
-    - name: Commit and Push manfiest files
-      uses: EndBug/add-and-commit@v9
-      with:
-        author_name: icj4153
-        author_email: icj4153@hanyang.ac.kr
-        message: "스프링 서버 이미지 태그 업데이트 #${{ github.run_number }}.${{ github.run_attempt }}"
-        cwd: './classmoa-k8s-manifest'
-        push: true
+    - name: Commit files
+      run: |
+        cd k8s-manifest-repo
+        git config --global user.email "icj4153@hanyang.ac.kr"
+        git config --global user.name "icj4153"
+        git commit -am "스프링 서버 이미지 태그 업데이트"
+        git push -u origin main
+#    - name: Commit and Push manfiest files
+#      uses: EndBug/add-and-commit@v9
+#      with:
+#        author_name: icj4153
+#        author_email: icj4153@hanyang.ac.kr
+#        message: "스프링 서버 이미지 태그 업데이트 #${{ github.run_number }}.${{ github.run_attempt }}"
+#        cwd: './classmoa-k8s-manifest'
+#        push: true
