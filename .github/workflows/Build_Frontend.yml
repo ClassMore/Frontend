@@ -64,7 +64,7 @@ jobs:
       run: |
         pwd
         ls
-        cd classmoa-k8s-manifest/overlays/dev/ 
+        cd k8s-manifest-repo/overlays/dev/ 
         kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/classmoa-front=${{ steps.login-ecr.outputs.registry }}/classmoa-front:${{ github.run_number }}.${{ github.run_attempt }}
         cat kustomization.yaml
       # 수정된 kustomization.yaml 파일 commit push
