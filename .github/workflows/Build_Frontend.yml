@@ -71,10 +71,11 @@ jobs:
 
     - name: Update Kubernetes resources
       run: |
-        pwd
-        ls
-        cd k8s-manifest-repo/overlays/dev/ 
-        kustomize edit set image ${{ steps.login-ecr.outputs.registry }}/classmoa-front=${{ steps.login-ecr.outputs.registry }}/classmoa-front:${{ github.run_number }}.${{ github.run_attempt }}
+        echo \${{ steps.login-ecr.outputs.registry }}
+        echo \${{ steps.image-info.outputs.ecr_repository }}
+        echo \${{ steps.image-info.outputs.image_tag }}
+        cd k8s-manifest-repo/overlays/dev/
+        kustomize edit set image \${{ steps.login-ecr.outputs.registry}}/\${{ steps.image-info.outputs.ecr_repository }}=\${{ steps.login-ecr.outputs.registry}}/\${{ steps.image-info.outputs.ecr_repository }}:\${{ steps.image-info.outputs.image_tag }}
         cat kustomization.yaml
 
       # 수정된 kustomization.yaml 파일 commit push
@@ -85,7 +86,7 @@ jobs:
         git config --global user.name "icj4153"
         git commit -am "스프링 서버 이미지 태그 업데이트"
         git push -u origin main
-#    - name: Commit and Push manfiest files
+#    - name: Commit and Push manfiest fil es
 #      uses: EndBug/add-and-commit@v9
 #      with:
 #        author_name: icj4153
