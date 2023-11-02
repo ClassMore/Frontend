@@ -105,7 +105,7 @@ const AutoComplete = () => {
         <Filter type={settype} />
         <InputBox>
         <input
-          style={{ marginLeft: "0.1rem" }}
+          style={{ marginLeft: "0.1rem", width:"1000px" }}
           className="search-bar"
           placeholder="Search..."
           type='text'
@@ -113,7 +113,7 @@ const AutoComplete = () => {
           onChange={changeInputValue}
           onKeyUp={handleDropDownKey}
         />
-        <DeleteButton style={{ color: "white", marginLeft: "-1.5rem", zIndex: "1" }} onClick={() => setkeyword('')}>&times;</DeleteButton>
+        <DeleteButton style={{ color: "white", marginLeft: "-1.5rem" , zIndex: "1" }} onClick={() => setkeyword('')}>&times;</DeleteButton>
         </InputBox>
         {isHaveInputValue && (
           <DropDownBox className='autocomplete'>

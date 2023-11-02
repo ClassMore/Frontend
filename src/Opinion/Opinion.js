@@ -63,6 +63,8 @@ const Opinion = ({ lectureId, _write }) => {
         const source = res.data;
         console.log(res);
         setwrite(w => !w)
+        setwriteIdx(-1)
+        setcontent('')
         setloading(false)
       }).catch(err => {
         console.log(err);
@@ -134,17 +136,17 @@ const Opinion = ({ lectureId, _write }) => {
                         else seteditIdx(-1)
                         setmodifiedContent(undefined)
                       }}>수정</button>
-
-                      <button className="editButtonRight" onClick={() => {
-                        if (writeIdx === idx) setwriteIdx(-1)
-                        else setwriteIdx(idx)
-                        setwrite(w => !w)
-                      }}>댓글 작성
-                      </button>
-
-
                     </>
                   }
+                  {localStorage.getItem('token') &&
+                    <button className="editButtonRight" onClick={() => {
+                      if (writeIdx === idx) setwriteIdx(-1)
+                      else setwriteIdx(idx)
+                      setwrite(w => !w)
+                    }}>댓글 작성
+                    </button>
+                  }
+
                 </div>
 
                 <div className="comment-content">

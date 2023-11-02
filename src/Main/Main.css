@@ -334,7 +334,7 @@ body:not(input){
 .filter-menu.active {
   visibility: visible;
   opacity: 1;
-  top: calc(100% + 8px);
+  top: calc(100% + 8px);  
 }
 .filter-menu label.main {
   display: block;
@@ -622,3 +622,25 @@ hr {
   background: linear-gradient(to right, transparent, white, white, white, transparent);
 }
 
+.tagfilter-menu li {
+  padding-left: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.tagfilter-menu li:hover {
+  background-color: var(--sidebar-hover-link);
+  cursor: pointer;
+}
+
+.sidebar-list-item.active {
+  background-color: var(--sidebar-active-link);
+}
+.sidebar-list-item.active:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  background-color: var(--action-color);
+  height: 100%;
+  width: 4px;
+}

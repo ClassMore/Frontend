@@ -7,6 +7,8 @@ import SocialLogin from './Member/Login/SocialLogin';
 import Join from './Member/Join/Join';
 import Mypage from './Member/Mypage/Mypage';
 import LectureSearchPage from './Lecture/LectureSearchPage';
+import TagSearchPage from './Lecture/TagSearchPage';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route index element={<LectureListPage/>}/>
           <Route path='lecture/detail/*' element={<LectureDetailPage/>}/>
           <Route path='search' element={<LectureSearchPage/>}/>
+          <Route path='tag/*' element={<TagSearchPage/>}/>
           <Route path='mypage' element={<Mypage/>}/>
         </Route>
         <Route path='socialLogin' element={<SocialLogin/>}/>

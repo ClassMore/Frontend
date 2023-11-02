@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Main.css'
 import { Outlet } from 'react-router-dom';
-import Search from '../Search/Search';
 import ModalButton from '../Member/Modal/ModalButton';
 import styled from 'styled-components';
 import AutoComplete from '../Search/AutoComplete';
@@ -9,8 +8,11 @@ import AutoComplete from '../Search/AutoComplete';
 const Main = () => {
   const [active, setactive] = useState(false);
   const [viewType, setviewType] = useState('gridView')
+  const [data, setdata] = useState('')
   const [nickname, setnickname] = useState('')
   const [homeActive, sethomeActive] = useState('')
+  const [isClicked, setisClicked] = useState(false)
+  const [tagActive, settagActive] = useState('')
   const [myPageActive, setmyPageActive] = useState('')
 
   const modeSwitch = () => {
@@ -33,22 +35,39 @@ const Main = () => {
     setnickname(localStorage.getItem('nickname'))
     if (window.location.href.includes('mypage')) {
       sethomeActive('');
+      settagActive('');
       setmyPageActive('active');
+    }
+    else if (window.location.href.includes('tag')) {
+      sethomeActive('');
+      settagActive('active');
+      setmyPageActive('')
     } else {
       sethomeActive('active');
+      settagActive('');
       setmyPageActive('')
     }
-
   }, [])
 
   const homeHanlder = (e) => {
     e.preventDefault();
     window.location.href = "http://localhost:3000"
   }
-
+  const tagHanlder = (e, value) => {
+    e.preventDefault();
+    const url = encodeURI(`http://localhost:3000/tag/${value}`);
+    window.location.href = url
+  }
   const myPageHanlder = (e) => {
     e.preventDefault();
     window.location.href = "http://localhost:3000/mypage"
+  }
+
+  const tagWrapperHanlder = (e) => {
+    setisClicked(c => !c);
+  }
+  const tagapplyHandler = (e) => {
+    setdata(e.target.value);
   }
 
   return (
@@ -67,7 +86,31 @@ const Main = () => {
                 <span className='main'>Home</span>
               </a>
             </li>
-            {localStorage.getItem('token') && 
+            <li className={`sidebar-list-item ${tagActive}`}>
+              <a href='#' onClick={(e) => tagWrapperHanlder(e)} style={{ cursor: "pointer" }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 0 1 1-1h8a1 1 0 0 1 .707.293l10 10a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-10-10A1 1 0 0 1 2 11V3zm2 1v6.586l9 9L19.586 13l-9-9H4z" fill="currentColor" /><path d="M9 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" fill="currentColor" /></svg>
+                <span className='main'>Tag</span>
+              </a>
+            </li>
+            {isClicked &&
+              <div className="tagfilter-menu">
+                <ul className="tagsidebar-list" onChange={(e) => tagapplyHandler(e)}>
+                  <li onClick={(e) => tagHanlder(e, "프로그래밍")} className='main' value="프로그래밍">프로그래밍</li>
+                  <li onClick={(e) => tagHanlder(e, "앱-개발")} className='main' value="앱-개발">앱 개발</li>
+                  <li onClick={(e) => tagHanlder(e, "게임-개발")} className='main' value="게임-개발">게임 개발</li>
+                  <li onClick={(e) => tagHanlder(e, "비즈니스")} className='main' value="비즈니스">비즈니스</li>
+                  <li onClick={(e) => tagHanlder(e, "자기-개발")} className='main' value="자기-개발">자기 개발</li>
+                  <li onClick={(e) => tagHanlder(e, "철학")} className='main' value="철학">철학</li>
+                  <li onClick={(e) => tagHanlder(e, "교양")} className='main' value="교양">교양</li>
+                  <li onClick={(e) => tagHanlder(e, "데이터")} className='main' value="데이터">데이터</li>
+                  <li onClick={(e) => tagHanlder(e, "컴퓨터-공학")} className='main' value="컴퓨터-공학">컴퓨터 공학</li>
+                  <li onClick={(e) => tagHanlder(e, "인프라")} className='main' value="인프라">인프라</li>
+                  <li onClick={(e) => tagHanlder(e, "디자인")} className='main' value="디자인">디자인</li>
+                </ul>
+              </div>
+            }
+            {/* <Tag sethomeActive={sethomeActive} setmyPageActive={setmyPageActive} /> */}
+            {localStorage.getItem('token') &&
               <li className={`sidebar-list-item ${myPageActive}`}>
                 <a href='#' onClick={(e) => myPageHanlder(e)} style={{ cursor: 'pointer' }}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
