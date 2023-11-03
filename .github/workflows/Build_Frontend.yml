@@ -16,6 +16,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check out env files
+      uses: actions/checkout@v3
+      with:
+        repository: ClassMore/Frontend
+        ref: master
+        token: ${{ secrets.ACTION_TOKEN }}
+
+    - name: Upload env file
+      uses: actions/upload-artifact@master
+      with:
+        name: front-env
+        # 가져올 프로젝트의 설정 파일을 지정
+        path: ./front/env/.env
+
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -86,3 +100,12 @@ jobs:
         git config --global user.name "icj4153"
         git commit -am "스프링 서버 이미지 태그 업데이트"
         git push -u origin main
+
+      # 업로드한 artifacts를 삭제하기
+    - name: Remove Github Actions Artifacts
+      if : always()
+      uses: GeekyEggo/delete-artifact@v2.0.0
+      with:
+        # The name of the artifact to delete; multiple names can be supplied on new lines.
+        name: |
+          front-env
