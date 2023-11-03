@@ -28,7 +28,7 @@ jobs:
       with:
         name: front-env
         # 가져올 프로젝트의 설정 파일을 지정
-        path: ./front/env/.env
+        path: ./Frontend/.env
 
     - name: Checkout repository
       uses: actions/checkout@v2
