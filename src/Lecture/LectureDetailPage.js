@@ -22,7 +22,7 @@ const LectureDetailPage = () => {
       const message = error.response.data.message;
       if(message){
         alert(error.response.data.message);
-        window.location.href="http://localhost:3000/";
+        window.location.href=`${frontUrl}`;
       }
     });
   }, [lectureId]);

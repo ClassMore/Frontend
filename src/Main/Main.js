@@ -15,6 +15,8 @@ const Main = () => {
   const [tagActive, settagActive] = useState('')
   const [myPageActive, setmyPageActive] = useState('')
 
+  const frontUrl = process.env.REACT_APP_FRONT_URL;
+
   const modeSwitch = () => {
     setactive(!active);
     document.documentElement.classList.toggle('light');
@@ -51,16 +53,16 @@ const Main = () => {
 
   const homeHanlder = (e) => {
     e.preventDefault();
-    window.location.href = "http://localhost:3000"
+    window.location.href = `${frontUrl}`
   }
   const tagHanlder = (e, value) => {
     e.preventDefault();
-    const url = encodeURI(`http://localhost:3000/tag/${value}`);
+    const url = encodeURI(`${frontUrl}tag/${value}`);
     window.location.href = url
   }
   const myPageHanlder = (e) => {
     e.preventDefault();
-    window.location.href = "http://localhost:3000/mypage"
+    window.location.href = `${frontUrl}mypage`
   }
 
   const tagWrapperHanlder = (e) => {

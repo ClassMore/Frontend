@@ -6,6 +6,8 @@ import axios from 'axios'
 const Login = ({setter}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const frontUrl = process.env.REACT_APP_FRONT_URL
   const url = process.env.REACT_APP_DEFAULT_URL;
 
   const handlerLogin = async (e) => {
@@ -21,7 +23,7 @@ const Login = ({setter}) => {
           localStorage.setItem("token", token);
           localStorage.setItem("nickname", nickname);
           localStorage.setItem("id", id);
-          window.location.href = "http://localhost:3000/";
+          window.location.href = `${frontUrl}`;
         }
       })
       .catch(error => {

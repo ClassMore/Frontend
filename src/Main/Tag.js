@@ -4,9 +4,11 @@ const Tag = ({sethomeActive, setmyPageActive}) => {
 
   const [tagActive, settagActive] = useState('')
 
+  const frontUrl = process.env.REACT_APP_FRONT_URL;
+
   const tagHanlder = (e) => {
     e.preventDefault();
-    window.location.href = "http://localhost:3000"
+    window.location.href = `${frontUrl}`
   }
 
   return (

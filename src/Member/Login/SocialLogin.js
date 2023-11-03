@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 
+const frontUrl = process.env.REACT_APP_FRONT_URL
+
 const SocialLogin = () => {
   const url = process.env.REACT_APP_DEFAULT_URL;
   useEffect(() => {
@@ -11,7 +13,7 @@ const SocialLogin = () => {
     localStorage.setItem("token", token);
     localStorage.setItem('nickname', nickname);
     localStorage.setItem("id", id);
-    window.location.href = "http://localhost:3000/";
+    window.location.href = `${frontUrl}`;
   }, [])
   return (
     <></>

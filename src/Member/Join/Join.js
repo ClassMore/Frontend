@@ -13,6 +13,7 @@ const Join = ({setter}) => {
   const [password, setpassword] = useState('')
   const [confirmPassword, setconfirmPassword] = useState('')
 
+  const frontUrl = process.env.REACT_APP_FRONT_URL
   const url = process.env.REACT_APP_DEFAULT_URL;
 
   const emailCheckHandler = () => {
@@ -66,7 +67,7 @@ const Join = ({setter}) => {
     )
     .then(res => {
       window.alert("회원가입에 성공하였습니다.")
-      window.location.href = "http://localhost:3000/";
+      window.location.href = `${frontUrl}`;
     }).catch(error => {
       console.log(error);
       alert(error.response.data.message)
