@@ -5,6 +5,9 @@ import LecturePriceChart from './LecturePriceChart'
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const frontUrl = process.env.REACT_APP_FRONT_URL
+
+
 const LectureDetailPage = () => {
   const location = useLocation();
   const [lecture, setLecture] = useState([]);
