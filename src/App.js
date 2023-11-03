@@ -8,6 +8,7 @@ import Join from './Member/Join/Join';
 import Mypage from './Member/Mypage/Mypage';
 import LectureSearchPage from './Lecture/LectureSearchPage';
 import TagSearchPage from './Lecture/TagSearchPage';
+import MainPage from './Lecture/MainPage';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Main/>}>
-          <Route index element={<LectureListPage/>}/>
+          <Route index element={<MainPage/>}/>
           <Route path='lecture/detail/*' element={<LectureDetailPage/>}/>
           <Route path='search' element={<LectureSearchPage/>}/>
           <Route path='tag/*' element={<TagSearchPage/>}/>

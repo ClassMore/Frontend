@@ -1,9 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import './LectureDetail.css'
 import Alarm from './Alarm/Alarm'
 import Interest from './Interest/Interest'
 
-const LectureDetail = ({ lecture }) => {
+const LectureDetail = ({lectureId}) => {
+
+  const [lecture, setlecture] = useState([])
+  const [loading, setloading] = useState(false)
+  const [result, setresult] = useState([])
+
+  const getLecture = async () => {
+    setloading(true)
+
+    const query = {
+      "query": {
+        "match" : {
+          "_id": `${lectureId}`
+        }
+      }
+    }
+
+    await axios.post(
+      'https://search-classmoa-uofe4bd5kkz5loqmz7wk4dpiqa.ap-northeast-2.es.amazonaws.com/search/_search',
+      query,
+      {
+        headers: {
+          'Content-type': 'application/json'
+        },
+        auth: {
+          username: process.env.REACT_APP_USERNAME,
+          password: process.env.REACT_APP_PASSWORD
+        }
+      }
+    ).then(res => {
+      const source = res.data.hits.hits[0]._source;
+      console.log(source);
+      setlecture(source);
+    })
+  }
+
+  useEffect(() => {
+    getLecture()
+  }, [])
 
   return (lecture &&
     <>
@@ -27,9 +66,20 @@ const LectureDetail = ({ lecture }) => {
           </span>{lecture.instructor}</div>
         <div className="product-cell custom sales">
           <span className="cell-label">tag:</span>{lecture.tag}</div>
-        <div className="product-cell custom stock"><span className="cell-label">Site:</span>{lecture.companyName}</div>
+        <div className="product-cell custom stock"><span className="cell-label">site:</span>{lecture.companyName}</div>
+        
         <div className="product-cell custom price">
-          <span style={{ fontSize: "26px" }} className="cell-label">가격</span> 
+          <span style={{ fontSize: "26px" }} className="cell-label">price:</span>
+          {lecture.salePercent === "-1" || lecture.salePercent === "" ? (
+            <>{lecture.salePrice}</>
+          ) : (
+            <>
+              <del style={{ opacity: "0.6", position: "absolute", right: "100px" }}>
+                {lecture.ordinaryPrice}
+              </del>
+              {lecture.salePrice}
+            </>
+          )}
         </div>
         <br />
         <Interest lectureId={lecture.lectureId} />
@@ -39,7 +89,5 @@ const LectureDetail = ({ lecture }) => {
     </>
   )
 }
-
-
 
 export default LectureDetail

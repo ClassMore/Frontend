@@ -20,6 +20,7 @@ const LectureDetailPage = () => {
     axios.get(`${url}lecture/${lectureId}`)
     .then(result => {
       setLecture(result.data);
+      console.log(result);
     })
     .catch((error) => {
       const message = error.response.data.message;
@@ -36,7 +37,7 @@ const LectureDetailPage = () => {
 
   return (lecture && lectureId &&
     <>
-      <LectureDetail lecture={lecture}/>
+      <LectureDetail lectureId={lectureId}/>
       <LecturePriceChart lectureId={lectureId}/>
       <OpinionPage lectureId={lectureId}/>
     </>
