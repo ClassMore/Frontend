@@ -4,10 +4,10 @@ import axios from 'axios';
 
 const LecturePriceChart = ({lectureId}) => {
     const [lectureData, setLectureData] = useState([]);
-
+    const url = process.env.REACT_APP_DEFAULT_URL;
     const getLectures = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/lecture/${lectureId}/chart`);
+            const response = await axios.get(`${url}api/lecture/${lectureId}/chart`);
             const source = response.data;
             setLectureData(source);
         } catch (error) {
