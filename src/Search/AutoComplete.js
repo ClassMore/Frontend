@@ -113,7 +113,7 @@ const AutoComplete = () => {
           onChange={changeInputValue}
           onKeyUp={handleDropDownKey}
         />
-        <DeleteButton style={{ color: "white", marginLeft: "-1.5rem" , zIndex: "1" }} onClick={() => setkeyword('')}>&times;</DeleteButton>
+        <DeleteButton style={{ color: "white", marginLeft:"-1.5rem", marginTop:"0.2rem", zIndex: "1" }} onClick={() => setkeyword('')}>&times;</DeleteButton>
         </InputBox>
         {isHaveInputValue && (
           <DropDownBox className='autocomplete'>
@@ -181,7 +181,7 @@ const DropDownBox = styled.ul`
   list-style-type: none;
   z-index: 100;
   margin-top: 8.5rem;
-  margin-left: 6rem;
+  margin-left: 8rem;
   
 `
 

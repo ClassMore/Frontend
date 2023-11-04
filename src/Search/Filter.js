@@ -31,7 +31,7 @@ const Filter = ({ type }) => {
           </svg>
         </button>
 
-        <div className="filter-menu">
+        <div style={{marginRight:"3vw"}} className="filter-menu">
           <label className='main'>Category</label>
           <select className='main select' onChange={(e) => applyHandler(e)}>
             <option className='main' value="instructor">강사명</option>
