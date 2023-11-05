@@ -7,7 +7,7 @@ const LecturePriceChart = ({lectureId}) => {
     const url = process.env.REACT_APP_DEFAULT_URL;
     const getLectures = async () => {
         try {
-            const response = await axios.get(`${url}api/lecture/${lectureId}/chart`);
+            const response = await axios.get(`${url}lecture/${lectureId}/chart`);
             const source = response.data;
             setLectureData(source);
         } catch (error) {

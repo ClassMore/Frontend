@@ -23,11 +23,12 @@ const LectureDetailPage = () => {
       console.log(result);
     })
     .catch((error) => {
-      const message = error.response.data.message;
-      if(message){
-        alert(error.response.data.message);
-        window.location.href=`${frontUrl}`;
-      }
+      // console.log(error);
+      // const message = error.message;
+      // if(message){
+      //   alert(error.message);
+      //   window.location.href=`${frontUrl}`;
+      // }
     });
   }, [lectureId]);
 

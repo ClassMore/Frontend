@@ -77,7 +77,7 @@ const Join = ({setter}) => {
 
   return (
     <div class="join-form">
-        <form action="http://localhost:8080/join" method="post">
+        <form action={`http://${url}/join`} method="post">
             <input type="text" name="memberName" class="text-field" value={email} 
             onChange={(e) => chnageHandler(e, setemail)} placeholder="이메일"/>
             <button class="auth-send-btn" onClick={() => emailCheckHandler()} type="button">인증코드 보내기</button>

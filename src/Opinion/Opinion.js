@@ -19,7 +19,7 @@ const Opinion = ({ lectureId, _write }) => {
 
   const url = process.env.REACT_APP_DEFAULT_URL;
 
-  const getOpioions = async () => {
+  const getOpinions = async () => {
     setloading(true)
     console.log(lectureId);
 
@@ -35,11 +35,11 @@ const Opinion = ({ lectureId, _write }) => {
   }
 
   useEffect(() => {
-    getOpioions()
+    getOpinions()
   }, [])
 
   useEffect(() => {
-    getOpioions();
+    getOpinions();
   }, [loading, _write, editIdx, remove])
 
   const clickHandler = (opinion) => {
