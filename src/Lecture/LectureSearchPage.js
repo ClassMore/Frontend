@@ -80,7 +80,7 @@ const LectureSearchPage = () => {
   return (Array.isArray(lectures) &&
     <>
       <LectureSearchList lectures={lectures.filter(lecture => lecture._source[`${type}`].includes(`${keyword}`))} />
-      <tr ref={ref}></tr>
+      <tr ref={ref} style={{marginTop: "1rem"}}></tr>
     </>
   )
 }
