@@ -6,6 +6,7 @@ const SocialLogin = () => {
   const url = process.env.REACT_APP_DEFAULT_URL;
   useEffect(() => {
     const data = decodeURI(window.location.href.split('?')[1]);
+    console.log(data);
     const dataSplit = data.split('&');
     const token = "Bearer " + dataSplit[0];
     const nickname = dataSplit[1];
