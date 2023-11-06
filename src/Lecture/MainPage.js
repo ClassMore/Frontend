@@ -55,7 +55,7 @@ const MainPage = () => {
   return (Array.isArray(lectures) &&
     <>
       <LectureSearchList lectures={lectures} />
-      <tr style={{marginTop: "1rem"}} ref={ref} ></tr>
+      <tr style={{marginTop: "3rem"}} ref={ref} ></tr>
     </>
   )
 }
