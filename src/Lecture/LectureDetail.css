@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!!!!!!!!!!!!!!!!!!!!!!그냥 추가!!!!!!!!!!!!!!!!!!!!!!!!*/
-.alarm-switch, .interest-switch {
+.alarm-switch, .interest-switch, .cart-switch {
   background-color: transparent;
   border: none;
   padding: 0;
@@ -24,6 +24,13 @@
 }
 
 .alarm-switch .alarm {
+  fill: none;
+}
+
+.cart-switch.active .interest {
+  fill:darkcyan;
+}
+.cart-switch .cart {
   fill: none;
 }
 

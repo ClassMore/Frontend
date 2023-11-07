@@ -2,12 +2,13 @@ import React from 'react'
 import './LectureDetail.css'
 import Alarm from './Alarm/Alarm'
 import Interest from './Interest/Interest'
+import Cart from './Cart/Cart'
 
 const LectureDetail = ({lecture}) => {
 
   return (lecture &&
     <>
-      {/* <div className="products-row custom">
+      {/* <div className="products-row custom">Set<BasketResponse> basketResponse = basketService.getBasketList(member.getMemberName());
         <button className="cell-more-button">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-more-vertical">
             <circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" />
@@ -44,6 +45,7 @@ const LectureDetail = ({lecture}) => {
         </button>
         <a href=""><button className="app-content-headerButton" style={{float: "right"}}>사이트 링크</button></a>
       </div> */}
+
       <div className="products-row custom">
         <button className="cell-more-button">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-more-vertical">
@@ -59,6 +61,7 @@ const LectureDetail = ({lecture}) => {
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-more-vertical"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg>
         </button>
         <div className="product-cell custom image"><br /><span>{lecture.title}</span></div>
+
         <br /><div className="product-cell custom category">
           <span className="cell-label">Instructor:
         </span>{lecture.instructor}</div>
@@ -82,8 +85,10 @@ const LectureDetail = ({lecture}) => {
         </button> */}
         <Interest lectureId={lecture.lectureId}/>
         <Alarm lectureId={lecture.lectureId}/>
+        <Cart lectureId={lecture.lectureId}/>
         <button className="app-content-headerButton" onClick={() => {window.open(`${lecture.siteLink}`)}} style={{float: "right"}}>사이트 링크</button>
       </div>
+
     </>
   )
 }

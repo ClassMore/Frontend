@@ -95,7 +95,7 @@ const Main = () => {
                 </div>
               </>
               :
-              <ModalButton className='modalButton' setter={setnickname}>Login</ModalButton>
+              <ModalButton className='modalButtzon' setter={setnickname}>Login</ModalButton>
 
             }
           </div>
