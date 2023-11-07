@@ -143,7 +143,7 @@ const Opinion = ({ lectureId, _write }) => {
                       if (writeIdx === idx) setwriteIdx(-1)
                       else setwriteIdx(idx)
                       setwrite(w => !w)
-                    }}>댓글 작성
+                    }}>답글 작성
                     </button>
                   }
 
@@ -190,7 +190,12 @@ const Opinion = ({ lectureId, _write }) => {
 
                       <>
                         <input value={content}
-                          onChange={(e) => changeHandler(e, setcontent)} />
+                          onChange={(e) => {
+                            changeHandler(e, setcontent)
+                            if (e.keyCode == 13) {
+                              clickHandler(opinion)
+                            }
+                          }} />
                         <button className="editButton" onClick={() => clickHandler(opinion)}>작성</button>
                         <button className="editButton" onClick={() => {
                           if (writeIdx === idx) setwriteIdx(-1)

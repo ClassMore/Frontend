@@ -35,6 +35,7 @@ const MainPage = () => {
       }
     ).then(res => {
       const source = res.data.hits.hits;
+      console.log(res);
       setresult(l => [...l, ...source])
       setLectures(l => [...l, ...(source.slice(0, 10))])
     });
@@ -55,7 +56,7 @@ const MainPage = () => {
   return (Array.isArray(lectures) &&
     <>
       <LectureSearchList lectures={lectures} />
-      <tr style={{marginTop: "3rem"}} ref={ref} ></tr>
+      <tr style={{marginTop: "6rem"}} ref={ref} ></tr>
     </>
   )
 }
