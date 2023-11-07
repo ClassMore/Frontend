@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import "./SliderTab.css";
+import { useNavigate } from "react-router-dom";
 
 const SliderTab = ({ courses }) => {
   const sliderSettings = {
@@ -13,6 +14,7 @@ const SliderTab = ({ courses }) => {
   };
 
   const sliderRef = useRef(null);
+  const nav = useNavigate();
 
   const goToPrevSlide = () => {
     sliderRef.current.slickPrev();
@@ -30,7 +32,7 @@ const SliderTab = ({ courses }) => {
         </button>
         <Slider ref={sliderRef} {...sliderSettings}>
           {courses.map((course, index) => (
-            <div key={index}>
+            <div key={index} onClick={() => nav(`/lecture/detail/${course.lectureId}`, {state: course.lectureId})}>
               <img style={{width: "200px", height: "155px"}} src={course.imageLink} alt={course.title}/>
               <h3 style={{color: "white"}}>{course.title}</h3>
             </div>

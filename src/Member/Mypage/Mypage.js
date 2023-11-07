@@ -155,9 +155,6 @@ const Mypage = () => {
                 <div className="tabs__panel-card">
                   <Box info={info}/>
                 </div>
-                <button className="btn-save" style={{color:"var( --app-content-main-color)"}} onClick={handleSaveChanges}>
-                  저장하기
-                </button>
               </div>
               {/* <!--single panel--> */}
               <div className="tabs__panel">
