@@ -65,7 +65,7 @@ const TagSearchPage = () => {
   return (Array.isArray(lectures) &&
     <>
       <LectureSearchList lectures={lectures} />
-      <tr ref={ref} style={{marginTop: "3rem"}}></tr>
+      <tr ref={ref} style={{marginTop: "6rem"}}></tr>
     </>
   )   
 }

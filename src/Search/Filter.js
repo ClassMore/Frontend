@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
 const Filter = ({ type }) => {
-  const [data, setdata] = useState('instructor')
+  const [data, setdata] = useState('title')
 
   // const resetHandler = () => {
   //   type('');
@@ -9,8 +9,8 @@ const Filter = ({ type }) => {
 
   const keyword = {"title": "강의명", "instructor": "강사명", "tag": "태그명"}
   const applyHandler = (e) => {
-    setdata(e.target.value);
     document.querySelector(".filter-menu").classList.toggle("active");
+    setdata(e.target.value);
   }
 
   useEffect(() => {
@@ -34,9 +34,9 @@ const Filter = ({ type }) => {
         <div style={{marginRight:"3vw"}} className="filter-menu">
           <label className='main'>Category</label>
           <select className='main select' onChange={(e) => applyHandler(e)}>
-            <option className='main' value="instructor">강사명</option>
             <option className='main' value="title">강의명</option>
-            <option className='main' value="tag">태그</option>
+            <option className='main' value="instructor">강사명</option>
+            <option className='main' value="tag">태그명</option>
           </select>
           <div className="filter-menu-buttons">
             {/* <button className="filter-button reset" onClick={() => resetHandler()}>

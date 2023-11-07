@@ -22,7 +22,7 @@ const Timer = ({ mm, ss }) => {
   }, [minutes, seconds]);
 
   return ( 
-    <div style={{display: 'inline-block'}}>
+    <div style={{color: 'black', display: 'inline-block'}}>
       {
         parseInt(minutes) === 0 && parseInt(seconds) === 0 ? 
         <span>시간이 만료되었습니다.</span>

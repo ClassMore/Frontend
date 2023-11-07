@@ -15,6 +15,7 @@ const OpinionPage = ({ lectureId }) => {
       alert("한 글자 이상 입력해주세요");
       return;
     }
+    console.log(localStorage.getItem('token'));
     axios.post(`${url}user/lecture/${lectureId}/opinion`,
       { 'content': `${content}` },
       {
@@ -32,6 +33,10 @@ const OpinionPage = ({ lectureId }) => {
   }
 
   const changeHandler = (e) => {
+    if(e.keyCode == 13){
+      clickHandler();
+      return;
+    }
     setcontent(e.target.value);
   }
 
@@ -39,15 +44,21 @@ const OpinionPage = ({ lectureId }) => {
     <>
       <div className="comments-container">
         <div style={{ marginLeft: '3rem', marginTop: '2rem' }}>
-          <button className="app-content-headerButton" style={{ fontSize: '18px', height: '36px' }} 
-          onClick={() => { setwrite(w => !w) }}>
-          {write ? '작성 취소' : '의견 작성'}</button>
+          <button className="app-content-headerButton" style={{ fontSize: '18px', height: '36px' }}
+            onClick={() => {
+              if(!localStorage.getItem('token')){
+                alert("회원만 등록할 수 있습니다.");
+                return;
+              }
+              setwrite(w => !w)
+            }}>
+            {write ? '작성 취소' : '의견 작성'}</button>
         </div>
 
         <ul id="comments-list" className="comments-list">
           {write &&
             <>
-              {}
+              { }
               <ul id='comments-list' className='comments-list'>
                 <li>
                   <div className="comment-main-level">
@@ -63,8 +74,8 @@ const OpinionPage = ({ lectureId }) => {
                           onChange={(e) => changeHandler(e)} />
                         <button className='editButton' onClick={() => clickHandler()}>등록</button>
                       </div>
-                      </div>
                     </div>
+                  </div>
                 </li>
               </ul>
             </>
