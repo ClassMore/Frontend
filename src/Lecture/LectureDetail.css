@@ -29,6 +29,10 @@
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!메인이랑 겹침!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
+.products-row.search {
+  height: 340px;
+}
+
 .products-row.custom {
   display: inline-block;
   margin: 8px;
