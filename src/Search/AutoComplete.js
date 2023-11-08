@@ -171,7 +171,7 @@ const DeleteButton = styled.div`
 
 const DropDownBox = styled.ul`
   display: block;
-  block-size: 5rem;
+  block-size: 30rem;
   position: absolute;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 0 0 10px 10px;
@@ -180,7 +180,7 @@ const DropDownBox = styled.ul`
   box-shadow: 0 10px 10px rgb(0, 0, 0, 0.3);
   list-style-type: none;
   z-index: 100;
-  margin-top: 8.5rem;
+  margin-top: 12rem;
   margin-left: 8rem;
   
 `

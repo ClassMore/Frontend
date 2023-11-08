@@ -258,7 +258,7 @@ body:not(input){
   background-repeat: no-repeat;
   background-position: left 10px center;
   width: 100%;
-  max-width: 320px;
+  max-width: 600px;
   transition: 0.2s;
 }
 .light .search-bar {

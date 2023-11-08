@@ -12,5 +12,5 @@
 .autocomplete{
   background-color: var(--app-content-secondary-color);
   color: var(--app-content-main-color);
-  width: 315px;
+  width: 600px;
 }
